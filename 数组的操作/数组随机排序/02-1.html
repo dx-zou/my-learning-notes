@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,4,5,6,7];
+        function randArr(arr) {
+            var newArr = [];
+            while(arr.length > 0) {
+                //生成一个随机数,范围[0-arr.length]
+                var randomNum = Math.floor(Math.random() * arr.length);
+                //把从arr中得到的随机元素添加到新数组,
+                newArr.push(arr[randomNum]);
+                //同时把这个随机元素从原数组删除,保证不会重复添加
+                arr.splice(randomNum,1);
+            }
+            return newArr;
+        }
+        console.log(randArr(arr));
+        
+    
+    </script>
+</body>
+</html>

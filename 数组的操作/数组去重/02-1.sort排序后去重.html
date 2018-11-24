@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+            1.先对数组使用sort方法排序,相同的元素会排列在一起
+            2.比较相邻的两个元素,如果当前元素与上一个元素不相同则把当前元素添加到新数组
+            3.只需比较相邻的两个元素,比indexof方法速度更快
+        */
+        var arr = [1,1,2,2,3,3,"a","a","b","b","c","c"];
+        var arr1 = [1,'a',2,'a',3,'c',4,'c',4,3,2,1,0];
+        function unique(arr) {
+            var res = [];
+            var sortedArr = arr.sort();
+            for (var i = 0, len = arr.length; i < len; i++) {
+                if (!i || sortedArr[i] !== sortedArr[i-1]) {
+                    res.push(sortedArr[i]);
+                }
+            }
+            return res;
+        }
+        console.log(unique(arr1));
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,1,2,2,"2",3,3,"a","a","b","b","c","c","1"];
+        //1.filter加indexOf方法去重
+        /*
+            1.filter方法可以对数组中的每一个元素执行一个过滤函数,返回一个包含
+            满足条件的数组的值的新数组
+        */
+       function unique(arr) {
+           var res = arr.filter(function(item,index,arr) {
+               return arr.indexOf(item) === index;
+           });
+           return res;
+       }
+        console.log(unique(arr));
+    
+        //2.判断数组中每个元素的类型,
+        
+    </script>
+    
+</body>
+</html>

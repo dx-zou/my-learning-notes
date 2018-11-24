@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,1,2,2,3,3,"a","a","b","b","c","c"];
+        
+
+        /*
+            遍历两个数组,依次比较两个数组的值,如果有相同的就跳出内层循环,
+            同时将flag变量赋值false
+            如果遍历完内层数组也没有发现与外层数组中数值相同的值,就把外层数组中的值添加到内层数组中
+        */
+        function unique(arr) {
+            var res = [];
+            for (var i = 0, len = arr.length; i < len; i++) {
+                var flag = true;
+                for (var j = 0,reslen = res.length; j < reslen; j++) {
+                    if (arr[i] == res[j]) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    res.push(arr[i]);
+                }
+            }
+            return res;
+        } 
+        console.log(unique(arr));
+        
+        /*
+            方法2:使用indexOf简化内层循环
+            如果在新数组中找不到arr[i]就返回-1;同时把arr[i]添加进新数组中
+
+        */
+       function unique1(arr) {
+           var res = [];
+           for (var i = 0, len = arr.length; i < len; i++) {
+               if (res.indexOf(arr[i]) === -1) {
+                   res.push(arr[i]);
+               }
+           }
+           return res;
+       }  
+       var arr1 = [1,'1',2,2,'3',3,"a","a","b","b","c","c"];
+       console.log(unique1(arr1));
+       
+        
+    </script>
+</body>
+</html>

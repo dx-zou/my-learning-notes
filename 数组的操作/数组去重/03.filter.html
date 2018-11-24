@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,1,2,2,3,3,"a","a","b","b","c","c"];
+        //1.filter加indexOf方法去重
+        function unique(arr) {
+            var res = arr.filter(function(item,index,arr) {
+                //indexOf()方法只会返回找到的给定字符的第一个位置,之后相同的字符的位置不会返回;
+                //后续的重复元素位置与indexOf返回的位置不相等，因此被filter滤掉了
+                //结果为true就添加进res中;
+                return arr.indexOf(item) === index;
+            });
+            return res;
+        }    
+        console.log(unique(arr));
+        //
+        var arr1 = [1,,1,"1",2,"2",2,3,3,"a","a","b","b","c","c"];
+        //2.filter加对象的方法
+        function unique1(arr) {
+            var obj = {};
+            return arr.filter(function(item,index,arr) {
+                //使用 typeof item + item 拼成字符串作为 key 值来避免 "1" 与 1 相等的情况
+                return obj.hasOwnProperty(typeof item + item) ? false : (obj[typeof item + item] = true);
+            });
+        } 
+        console.log(unique1(arr1));
+    
+    </script>
+    
+</body>
+</html>

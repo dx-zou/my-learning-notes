@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,1,2,2,3,3,"a","a","b","b","c","c"];
+        function unique(arr) {
+            var res = [];
+            //先将元数组进行sort排序,相同的元素会排列在一起,
+            var sortedArr = arr.sort();
+            for (var i = 0, len = arr.length; i < len; i++) {
+                // 如果是数组第一个值或下一个值不等于上一个相邻的值则添加进新数组res中
+                //!0 转为true 
+                if (!i || sortedArr[i] !== sortedArr[i-1]) {
+                    res.push(sortedArr[i]);
+                }
+            }
+            return res;
+        }
+        console.log(unique(arr));
+        
+    </script>
+</body>
+</html>

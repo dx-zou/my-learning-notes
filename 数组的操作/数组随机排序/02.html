@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义一个新数组
+        //随机生成一个原数组的下标
+        //将原数组随机下标对应的值添加到新数组,
+        //同时将原数组随机下标对应的值从原数组中删除,确保新数组中不会有重复的值
+        var arr = [1,2,3,4,5,6,7];
+        function randSort(arr) {
+            var newArr =[];
+            while (arr.length > 0) {
+                var random = parseInt(Math.random() * arr.length);
+                newArr.push(arr[random]);
+                arr.splice(random,1);
+            }
+            return newArr;
+        }
+        console.log(randSort(arr));
+        
+    </script>
+</body>
+</html>
