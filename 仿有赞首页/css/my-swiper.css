@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  margin: 100px 0;
+  overflow: hidden; }
+
+.swiper-container {
+  position: relative;
+  width: 400%;
+  height: 100%;
+  margin: 0 auto;
+  transition: all .3s ease-in-out; }
+  .swiper-container .swiper {
+    float: left;
+    width: 25%;
+    height: 100%; }
+    .swiper-container .swiper img {
+      display: block;
+      width: 100%;
+      height: 100%; }
+
+.dotBox {
+  position: absolute;
+  width: 110px;
+  height: 2px;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%); }
+  .dotBox .dot {
+    float: left;
+    width: 30px;
+    height: 2px;
+    margin-right: 10px;
+    border-radius: 2px;
+    background-color: #fff; }
+  .dotBox .dot:last-of-type {
+    margin-right: 0; }
+
+.btn {
+  position: absolute;
+  width: 50px;
+  line-height: 60px;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer; }
+
+.next {
+  right: 0; }
+
+/*# sourceMappingURL=my-swiper.css.map */
