@@ -14,46 +14,45 @@
 		<section class="todoapp" id="app">
 			<header class="header">
 				<h1>todos</h1>
-				<input class="new-todo" @keyup.enter="addTodo" v-model.trim="name" placeholder="What needs to be done?" autofocus>
+				<input class="new-todo" type="text" @keyup.enter="addTodo" 
+				v-model.trim="todo" placeholder="What needs to be done?" autofocus>
 			</header>
 			<!-- This section should be hidden by default and shown when there are todos -->
 			<section class="main">
-				<input id="toggle-all" class="toggle-all" type="checkbox" @click="selectAllTodo" v-model="checked" >
+				<input id="toggle-all" class="toggle-all" type="checkbox"
+				 v-model="checked" @click="selectALlTodo">
 				<label for="toggle-all">Mark all as complete</label>
 					<!-- These are here just to show the structure of the list items -->
 					<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-				<transition-group appear tag="ul" class="todo-list">
-					<li v-for="(item,index) of select?defaultTodo:todos " :key="item.id"
-					:class= "[todoClass[item.id].todo, todoClass[item.id].completed ,todoClass[item.id].editing]"
-					>
-						<div class="view">
-							<input class="toggle" type="checkbox" @click="selectTodo(index)" v-model="item.isCompleted">
-							<label @dblclick="editTodo(index)">{{item.name}}</label>
-							<button class="destroy" @click="delTodo(index)"></button>
-						</div>
-						<input class="edit" v-model="item.name" @blur="lostBlur(index)" @keyup.enter="lostBlur(index)" v-focus >
-					</li>
-
-				</transition-group>
+					<transition-group tag="ul" class="todo-list" appear>
+						<li v-for="(item,index) in active?defaultTodo:todoList" :key=item.id :class="{todo:true,completed:item.checked,editing:item.editing}">
+							<div class="view">
+								<input class="toggle" type="checkbox" @click="selectTodo(item)" v-model="item.checked">
+								<label @dblclick="item.editing = true">{{item.todo}}</label>
+								<button class="destroy" @click="delTodo(item,index)"></button>
+							</div>
+							<input class="edit" autofocus type="text" v-model="item.todo" @blur="item.editing=false" @keyup.enter="item.editing=false">
+						</li>
+					</transition-group>
 			</section>
 			<!-- This footer should hidden by default and shown when there are todos -->
-			<footer class="footer" v-show="this.todos.length >0">
+			<footer class="footer" v-show="todoList.length>0">
 				<!-- This should be `0 items left` by default -->
 				<span class="todo-count"><strong>{{count}}</strong> item left</span>
 				<!-- Remove this if you don't implement routing -->
 				<ul class="filters">
 					<li>
-						<a class="selected" href="#/" @click="select=false">All</a>
+						<a class="selected" href="#/" @click="active=false">All</a>
 					</li>
 					<li>
-						<a href="#/active" @click="showActive">Active</a>
+						<a href="#/active" @click="showActive" class="">Active</a>
 					</li>
 					<li>
 						<a href="#/completed" @click="showCompleted">Completed</a>
 					</li>
 				</ul>
 				<!-- Hidden if no completed items are left ↓ -->
-				<button class="clear-completed" v-show="showClear()" @click="clearCompleted()">Clear completed</button>
+				<button class="clear-completed" v-show="showClear()" @click="delCompleted">Clear completed</button>
 			</footer>
 		</section>
 		<footer class="info">
