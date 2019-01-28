@@ -1,13 +1,9 @@
 (function (window) {
 	'use strict';
-	/* 
+	/*
 	* TODO:
 	*/
 	// Your starting point. Enjoy the ride!
-	let all = {
-		template: '#tpl',
-
-	}
 	var vm = new Vue({
 		el: '#app',
 		data: {
@@ -26,8 +22,6 @@
 				this.count = this.todoList.length
 			},
 			addTodo() {
-				// this.todoList = JSON.parse(localStorage.getItem('todos')) || []
-				// this.count = this.todoList.length
 				if(this.todo == '') return alert('What needs to be done')
 				this.todoList.unshift({id:this.id++,todo:this.todo,checked:false,editing:false})
 				localStorage.setItem('todos',JSON.stringify(this.todoList))
