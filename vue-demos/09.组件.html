@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+                <!-- 直接写组件标签，导致 tr渲染到table外面-->
+                <row></row>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <!-- 添加is属性 -->
+                <tr is="row"></tr>
+            </tbody>
+        </table>
+    </div>
+    <template id="tpl">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </template>
+    <script>
+        Vue.component('row',{
+            template:'#tpl'
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: ''
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <my-comp :my-msg="msg"></my-comp>
+    </div>
+    <template id="tpl">
+        <div>
+            <h1>{{myMsg}}</h1>
+        </div>
+    </template>
+    <script>
+        let myComp = {
+            template: '#tpl',
+            props: ['my-msg'],
+            created() {
+                console.log(typeof this.myMsg)
+            }
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '父组件的数据'
+            },
+            components: {
+                myComp,
+            }
+        })
+    </script>
+</body>
+</html>
