@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child :content="101"></child>
+    </div>
+    <template id="tpl">
+        <div>{{content}}</div>
+    </template>
+    <script>
+        Vue.component('child',{
+            template:'#tpl',
+            props: {
+                content:[Number,String]
+            }
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+</html>
