@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to='/login'>login</router-link>
+        <router-link to="/register">register</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        let login = {
+            template: `<h1>login</h1>`
+        }
+        let register = {
+            template: `<h1>register</h1>`
+        }
+        const routes = [
+            {path:'/',redirect:'/login'},
+            {path:'/login',component: login},
+            {path:'/register',component: register},
+        ]
+        const router = new VueRouter({
+            routes
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router,
+            watch: {
+                $route (to,from) {
+                    if (to.path === '/login') {
+                        alert('欢迎访问首页')
+                    } else if (to.path === '/register') {
+                        alert('欢迎访问注册页面')
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
