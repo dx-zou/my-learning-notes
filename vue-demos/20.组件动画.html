@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+    <style lang="">
+        .v-enter,.v-leave-to {
+            opacity: 0;
+            transform: translateY(300px)
+        }
+        .v-enter-active,.v-leave-active {
+            transition: all 0.5s ease-in-out
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="change">click me</button>
+        <transition>
+            <div v-show="flag">component animation</div>
+        </transition>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {
+                change() {
+                    this.flag = !this.flag
+                }
+            },
+        })
+    </script>
+</body>
+</html>
