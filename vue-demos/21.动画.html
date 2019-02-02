@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+    <style lang="">
+        @keyframes moving {
+            from {
+                transform: scale(0)
+            }
+            50% {
+                transform: scale(2)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        .fade-enter-active {
+            transform-origin: left center;
+            animation: moving 3s 
+        }
+        .fade-leave-active {
+            transform-origin: left center;
+            animation: moving 3s reverse
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="change">click</button>
+        <transition name="fade">
+            <login v-show="flag"></login>
+            
+        </transition>
+    </div>
+    <script>
+        let login = {
+            template: `<div >login page</div>`
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {
+                change() {
+                    this.flag = !this.flag
+                }                
+            },
+            components: {
+                login
+            }
+        })
+    </script>
+</body>
+</html>
