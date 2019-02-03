@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+    <script>
+        let userComponent = {
+            template: `<div>user page
+                <router-view></router-view>
+            </div>`
+        }
+        let settingComponent = {
+            template: `<div>setting</div>`
+        }
+        let profileComponent = {
+            template: `<div>profile</div>`
+        }
+        const routes = [
+            {path:'/',redirect:'/user'},
+            {
+                path:'/user',
+                component: userComponent,
+                children:[
+                    {path: 'setting',component: settingComponent},
+                    {path: 'profile',component: profileComponent}
+                ]
+            }
+        ]
+        const router = new VueRouter({
+            routes
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router
+        })
+    </script>
+</body>
+</html>
