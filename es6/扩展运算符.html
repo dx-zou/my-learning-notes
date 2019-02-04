@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<script>
+    let a = [1,2,3]
+    let b = [...a]
+    let c = [...a,4,5,6]
+    console.log(b)
+    console.log(c)
+    let person = {name:'feng',age:18,study:function() {console.log('learning font-end')}}
+    let people = {...person}
+    console.log(people)
+    people.age = 20
+    console.log(person)
+    console.log(people)
+    people.study()
+    let man = {...people,gender:'man',height:180}
+    console.log(man)
+    function foo(...arg) {
+        console.log(arg)
+    }
+    foo(1,2,3)
+    console.log('----------------------------')
+
+</script>
+</body>
+</html>
