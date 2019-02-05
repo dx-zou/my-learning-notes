@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(a) {
+            return a*100
+        }
+        function fn(x=2,y=x+22,z=foo(x)) {
+            console.log(...[x,y,z])
+        }
+        fn()
+        fn(20,undefined)
+        function test({name='feng',age=18,skill='front-end'}={}) {
+            console.log(`name:${name},age:${age},skill:${skill}`)
+        }
+        test()
+    </script>
+</body>
+</html>
