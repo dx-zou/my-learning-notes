@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3]
+        function foo(a,b,c) {
+            console.log(a+b+c)
+        }
+        foo.apply(null,arr)
+        //展开数组
+        foo(...arr)
+        let arr1 = [4,5,6]
+        function fn(...arg) {
+            console.log(arg)
+        }
+        fn([1,2,3])
+    </script>
+</body>
+</html>
