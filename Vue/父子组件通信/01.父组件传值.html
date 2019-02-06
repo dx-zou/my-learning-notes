@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg" placeholder="input anything">
+        <h1>父组件的数据：{{msg}}</h1>
+        <child :c-msg="msg"></child>
+    </div>
+    <template id="tpl">
+        <div>
+            <h1>子组件的数据：{{cMsg}}</h1>
+        </div>
+    </template>
+    <script>
+        let child = {
+            template: '#tpl',
+            props: ['c-msg'],
+
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: ''
+            },
+            components: {
+                child
+            }
+        })
+    </script>
+</body>
+</html>
