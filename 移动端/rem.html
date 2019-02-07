@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>Document</title>
+    <style>
+        p {
+            font-size: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>html</p>
+    </div>
+    <script>
+        window.onresize = function () {
+            var deviceWidth = document.documentElement.clientWidth || document.body.clientWidth;
+            if (deviceWidth > 640) deviceWidth = 640
+            //640px 设计稿
+            document.documentElement.style.fontSize = deviceWidth/6.4 + 'px'
+        }
+    </script>
+</body>
+</html>
