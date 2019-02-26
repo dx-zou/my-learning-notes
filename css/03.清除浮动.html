@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="" content="">
+    <meta keywords="" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            float: left;
+            width: 200px;
+            height: 30px;
+            margin-right: 30px;
+            background-color: orangered;
+        }
+
+        .clearfix::after {
+            display: block;
+            content: '';
+            height: 0;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .bottom {
+            width: 100%;
+            height: 20px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="wrap"></div>
+        <div class="wrap"></div>
+        <div class="wrap"></div>
+    </div>
+    <div class="bottom"></div>
+</body>
+
+</html>

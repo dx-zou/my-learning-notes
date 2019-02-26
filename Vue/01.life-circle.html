@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <;button @click="changeData">click</button>
+        {{msg}}
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: ''
+            },
+            methods: {
+               changeData() {
+                   this.msg = 'hello world'
+               } 
+            },
+            beforeCreate() {
+                console.log('beforeCreate:实例完全创建之前执行，data，methods还没有初始化')
+            },
+            created() {
+                console.log('created：data,methods已经初始化，实例已经创建完毕')
+            },
+            beforeMount() {
+                console.log('beforeMount：模板已经在内存中编译完成，还未渲染到页面')
+            },
+            mounted() {
+                console.log('mounted：模板完全渲染到页面，最早可以在这操作dom');
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate: data中的数据改变时触发，此时页面上的数据没有重新渲染')
+            },
+            updated() {
+                console.log('updated: data中数据改变，页面数据同步更新后触发')  
+            },
+            beforeDestroy() {
+                console.log('beforeDestroy:实例被销毁之前触发')
+            },
+            destroyed() {
+                
+            },
+        })
+    </script>
+</body>
+</html>

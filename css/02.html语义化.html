@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .line {
+            height: 1px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>header</h1>
+    </header>
+    <nav>nav</nav>
+    <article>
+        <section>article</section>
+        <label for="txt">
+            搜索：
+            <input type="text" id="txt" placeholder="what can I do for you "> 
+        </label>
+        <label for="btn">
+            点击按钮：
+            <button id="btn">click</button>
+        </label>
+    </article>
+    <aside>aside</aside>
+    <footer>footer</footer>
+    <div class="line"></div>
+</body>
+<script>
+    document.querySelector('#btn').onclick = function() {
+        alert('123')
+    }
+</script>
+</html>

@@ -22,12 +22,7 @@ function deepClone2(origin) {
     for(let key in origin) {
          // 不遍历原型链上的属性
         if(origin.hasOwnProperty(key)) {
-            if (origin[key] && typeof origin[key] === 'object') {
-                result[key] = origin[key].constructor === Array ? [] : {}
-                result[key] = deepClone2(origin[key])
-            } else {
-                result[key] = origin[key]
-            }
+            result[key] = typeof origin[key] === 'object' ? deepClone2(origin[key]) : origin[key]
         }
     }
     return result

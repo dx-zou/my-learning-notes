@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css钻石</title>
+    <style lang="">
+        .container {
+            height: 60px;
+            margin-bottom: 2px;
+        }
+        .common {
+            float: left;
+            width: 0;
+            height: 0;
+            border: 30px solid transparent;
+            border-bottom: 30px solid red
+        }
+        .common:nth-child(2) {
+            transform-origin: bottom center;
+            transform: rotate(-180deg) translate(26px,30px)
+        }
+        .common:nth-child(4) {
+            transform-origin: bottom center;
+            transform: rotate(-180deg) translate(78px,30px)
+        }
+        .common:nth-child(3) {
+            transform: translateX(-52px)  
+        }
+        .common:nth-child(5) {
+            transform: translateX(-104px)  
+        }
+        .b {
+            height: 90px;
+        }
+        .bottom {
+            float: left;
+            width: 0;
+            height: 0;
+            border-width: 90px 32px 32px;
+            border-color: red transparent transparent;
+            border-style: solid;
+        }
+        .bottom:nth-child(2) {
+            transform: translateX(2px)
+        }
+        .bottom:nth-child(3) {
+            transform: translateX(-38px) skew(-35deg);
+        }
+        .bottom:nth-child(1) {
+            transform-origin: 100% 0;
+            transform: skew(35deg) 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="common "></div>
+        <div class="common "></div>
+        <div class="common "></div>
+        <div class="common "></div>
+        <div class="common "></div>
+    </div>
+    <div class="b">
+        <div class="bottom"></div>
+        <div class="bottom"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>
