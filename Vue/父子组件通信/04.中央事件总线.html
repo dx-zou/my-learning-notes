@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <brother1></brother1>
+        <brother2></brother2>
+    </div>
+    <template id="tpl">
+        <div>
+            <p>this is brother1 component</p>
+            <input type="text" v-model="mymessage" @input="passData(mymessage)">
+        </div>
+    </template>
+    <template id="tpl1">
+        <div>
+            <p>this is brother2 component</p>
+            <p>brother1传递过来的数据：{{brothermessage}}</p>
+        </div>
+    </template>
+    <script>
+        Vue.component("brother1", {
+            data() {
+            return {
+                mymessage: "hello brother1"
+            };
+            },
+            template: '#tpl',
+            methods: {
+            passData(val) {
+                //触发全局事件globalEvent
+                bus.$emit("globalEvent", val);
+            }
+            }
+        });
+        Vue.component("brother2", {
+            template: '#tpl1',
+            data() {
+            return {
+                mymessage: "hello brother2",
+                brothermessage: ""
+            };
+            },
+            mounted() {
+            //绑定全局事件globalEvent
+            bus.$on("globalEvent", val => {
+                this.brothermessage = val;
+            });
+            }
+        });
+        //中央事件总线
+        var bus = new Vue();
+
+        var app = new Vue({
+            el: "#app",
+            components: {
+            }
+        });
+        </script>
+    </body>
+</html>

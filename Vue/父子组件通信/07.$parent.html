@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <template id="tpl">
+        <div>
+            <h1>this is child component</h1>
+            <h2>{{message}}</h2>
+            <input type="text" v-model="message" @input="change">
+        </div>
+    </template>
+    <template id="tpl1">
+        <div>
+            <child></child>
+            <h1>this is parent component</h1>
+            <h2>{{message}}</h2>
+        </div>
+    </template>
+    <script>
+        Vue.component('child',{
+            template: '#tpl',
+            data() {
+                return {
+                    message: ''
+                }
+            },
+            methods: {
+                change() {
+                    this.$parent.message = this.message
+                }
+            },
+        })
+        Vue.component('parent',{
+            template: '#tpl1',
+            data() {
+                return {
+                    message: '456'
+                }
+            }
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                
+            }
+        })
+    </script>
+</body>
+</html>
