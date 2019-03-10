@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function unique(arr) {
+            let res = []
+            for(let i = 0,len = arr.length; i < len; i++) {
+                if (!res.includes(arr[i])) {
+                    res.push(arr[i])
+                }
+            }
+            return res
+        }
+
+        let arr = [1,1,'1','1',NaN,NaN,undefined,undefined,{},{}]
+        console.log(unique(arr))//无法过滤对象
+
+    </script>
+</body>
+</html>

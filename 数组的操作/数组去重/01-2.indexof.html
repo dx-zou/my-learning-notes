@@ -9,7 +9,7 @@
 <body>
     <script>
         var arr = [1,1,2,2,3,3,"a","a","b","b","c","c"];
-        
+
 
         /*
             遍历两个数组,依次比较两个数组的值,如果有相同的就跳出内层循环,
@@ -31,9 +31,9 @@
                 }
             }
             return res;
-        } 
+        }
         console.log(unique(arr));
-        
+
         /*
             方法2:使用indexOf简化内层循环
             如果在新数组中找不到arr[i]就返回-1;同时把arr[i]添加进新数组中
@@ -47,11 +47,11 @@
                }
            }
            return res;
-       }  
-       var arr1 = [1,'1',2,2,'3',3,"a","a","b","b","c","c"];
+       }
+       var arr1 = [1,'1',2,2,"a","a",{},{}];
        console.log(unique1(arr1));
-       
-        
+
+
     </script>
 </body>
 </html>
