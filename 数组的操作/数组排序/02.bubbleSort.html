@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        bubbleSortSoul3 = (arr = []) => {
+            let [length,count] = [arr.length-1,0]
+            // 单层for循环
+            for (let j = 0; j < length; j++) {
+                arr[j] > arr[j + 1] && ([arr[j],arr[j+1]] = [arr[j+1],arr[j]])
+                // 在循环到最大值时候重置j(j=-1到上面j++重置为0)这样可以省了外层for循环
+                if (j == length - 1) {
+                    j = -1;
+                    length--;
+                    count++;
+                }
+            }
+            console.log(`bubbleSortSoul3排序完成用了${count}轮`);
+            return arr;
+        }
+        var res = bubbleSortSoul3([10, 2, 33, 4, 11, 66, 20])
+        console.log(res);
+    </script>
+</body>
+
+</html>
