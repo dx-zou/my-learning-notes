@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">vue<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>父组件：{{msg}}</h1>
+        <button @click="current='my-title'">子组件1</button>
+        <button @click="current='my-content'">子组件2</button>
+        <input type="text" placeholder="What Can I do for you ?" v-model="msg">
+        <!-- <component :is="current"></component> -->
+        <router-link to="/">首页</router-link>
+        <router-link to="/signIn">登录</router-link>
+        <router-view></router-view>
+       <!--  <h2>子组件1：</h2>
+        <my-title v-model="msg" :title="msg"></my-title>
+        <h3>子组件2：</h3>
+        <my-content v-bind="man"></my-content> -->
+    </div>
+    <template id="tpl">
+        <div class="wrap">
+        {{value}}
+        <input type="text" v-model="value">
+        </div>
+    </template>
+    <template id="tpl2">
+        <div>
+            <h3>{{name}}</h3>
+            <p>{{age}}</p>
+        </div>
+    </template>
+    <script>
+        let myTitle = {
+            template: '#tpl',
+            props: {
+                title: {
+                    type: String,
+                    default: 'fdfdf'
+                },
+                value: {
+                    type: String,
+                    default: '哈哈哈'
+                }
+            },
+            data() {
+                return {
+                    message: 'this is a child component'
+                }
+            }
+        }
+        let myContent = {
+            template: '#tpl2',
+            props: {
+                name: String,
+                age: Number,
+            },
+            data() {
+                return {
+                    message: 'this is myContent'
+                }
+            }
+        }
+        const router = new VueRouter({
+            routes: [
+                {path:'/',redirect: '/login'},
+                {path:'/login',component: myTitle},
+                {path:'/signIn',component: myContent},
+            ]
+        })
+        var app = new Vue({
+            el:'#app',
+            data: {
+                msg:'',
+                man: {
+                    name: 'feng',
+                    age: 18
+                },
+                current: 'my-title'
+            },
+            router,
+            components: {
+                myTitle,
+                myContent
+            },
+            methods: {
+                changeComponent() {
+                    this.current=""
+                }
+            }
+        })
+    </script>
+</body>
+</html>
