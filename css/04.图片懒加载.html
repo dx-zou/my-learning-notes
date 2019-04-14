@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+  <script src=""></script>
+  <style>
+    .container {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    .wrap {
+      margin-bottom: 60px;
+    }
+
+    img {
+      display: block;
+      width: 600px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/1.jpg">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/2.jpg">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/3.jpg">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/4.jpg">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/5.png">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/6.jpg">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/7.jpg">
+    </div>
+    <div class="wrap">
+      <img class="test-img" alt="loading" data-src="./images/8.jpg">
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      var flag = false
+      checkImgs()
+      window.onscroll = function () {
+        checkImgs()
+      }
+      //遍历图片是否在可视区，if true 则加载
+      function checkImgs() {
+        if (flag) return
+        const allImgs = document.querySelectorAll('.test-img');
+        // console.log(allImgs);
+        // console.log(Array.from(allImgs));
+        //过滤出没有加载的图片
+        const noLoading = Array.from(allImgs).filter(item => !item.index)
+        if (noLoading.length === 0) return flag = true
+        noLoading.forEach(el => {
+          if (isInSight(el)) {
+            loadImg(el);
+            //如果已经加载就标记一下
+            el.index = 1
+          }
+        })
+      }
+      // 判断图片是否在可视区
+      function isInSight(el) {
+        var rect = el.getBoundingClientRect();
+        var height = window.innerHeight
+        return rect.top < height - 200
+      }
+      //加载图片
+      function loadImg(el) {
+        if (!el.src) {
+          el.src = el.dataset.src;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
