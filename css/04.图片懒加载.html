@@ -57,10 +57,8 @@
       window.onload = function() {
         // var flag = false;
         checkImgs();
-        window.onscroll = function() {
-          // checkImgs();
-          throttle(checkImgs, 1000);
-        };
+        // window.onscroll = throttle(checkImgs, 300);
+        window.onscroll = throttle3(checkImgs, 300);
         //遍历图片是否在可视区，if true 则加载
         function checkImgs() {
           // if (flag) return;
@@ -91,14 +89,47 @@
         //节流函数
         //时间戳方式
         function throttle(func, wait) {
+          var context, args;
           var previous = 0;
-          var now = +new Date();
-          if (now - previous > wait) {
-            func();
-            console.log("run");
+          return function() {
+            var now = +new Date();
+            context = this;
+            args = arguments;
+            if (now - previous > wait) {
+              func.apply(context, args);
+              console.log("run");
 
-            previous = now;
-          }
+              previous = now;
+            }
+          };
+        }
+        //定时器方式
+        function throttle2(func, wait) {
+          var timeout;
+          return function() {
+            var that = this;
+            var args = arguments;
+            if (!timeout) {
+              timeout = setTimeout(function() {
+                timeout = null;
+                // func();
+                func.apply(that, args);
+                console.log("run");
+              }, wait);
+            }
+          };
+        }
+        function throttle3(func, wait) {
+          var timeout;
+          return function() {
+            if (!timeout) {
+              timeout = setTimeout(() => {
+                timeout = null;
+                func();
+                console.log("run");
+              }, wait);
+            }
+          };
         }
       };
     </script>
