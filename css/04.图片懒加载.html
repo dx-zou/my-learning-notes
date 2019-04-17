@@ -5,7 +5,7 @@
   <title></title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1" />
-  <script src=""></script>
+  <script src="./loadsh.js"></script>
   <style>
     .container {
       width: 600px;
@@ -65,11 +65,17 @@
         // var top = document.body.scrollTop || document.documentElement.scrollTop
         document.documentElement.scrollTop = 0
       })
-      // checkImgs();
+      checkImgs();
+       // _.throttle(checkImgs, 300,{leading:true,trailing:true})
       // window.onscroll = throttle(checkImgs, 300);
       // window.onscroll = throttle3(checkImgs, 300);
-      debounce2(checkImgs, 300, true)()
-      window.onscroll = debounce2(checkImgs, 300, true);
+      // debounce2(checkImgs, 300, true)()
+      // window.onscroll = debounce2(checkImgs, 300, true);
+
+      //使用loadsh节流函数
+      window.addEventListener('scroll', _.throttle(checkImgs, 300,{leading:true,trailing:true}));
+
+
       //遍历图片是否在可视区，if true 则加载
       function checkImgs() {
         const allImgs = document.querySelectorAll(".test-img");
