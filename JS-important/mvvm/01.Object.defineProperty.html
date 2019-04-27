@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = {};
+      Object.defineProperty(obj, "name", {
+        configurable: true, //属性可删除的
+        // writable: true, //属性可写的
+        enumerable: true, //属性可枚举的
+        //获取属性时触发get方法
+        get() {
+          return "feeng";
+        },
+        //设置属性时触发set方法
+        set(val) {
+          console.log(val);
+        }
+        // value: "feeng"
+      });
+      //   delete obj.name;
+      for (let key in obj) {
+        console.log(key);
+      }
+      console.log(obj.name);
+      obj.name = "feng";
+      //   console.log(obj);
+    </script>
+  </body>
+</html>

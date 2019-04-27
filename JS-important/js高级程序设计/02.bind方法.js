@@ -1,4 +1,4 @@
-function bind(func,context) {
+function myBind(func,context) {
     //闭包
     return function() {
         return func.apply(context,arguments)
@@ -12,4 +12,4 @@ var obj = {
         console.log([...arguments])
     }
 }
-bind(obj.handler,obj)(1,2,3)
+myBind(obj.handler,obj)(1,2,3)
