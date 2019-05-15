@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .move-border {
+        width: 200px;
+        height: 100px;
+        margin: 100px auto;
+        transition: ease-in 0.3s;
+        background: linear-gradient(0, #108b96 2px, #108b96 2px) no-repeat,
+          linear-gradient(-90deg, #108b96 2px, #108b96 2px) no-repeat,
+          linear-gradient(-180deg, #108b96 2px, #108b96 2px) no-repeat,
+          linear-gradient(-270deg, #108b96 2px, #108b96 2px) no-repeat;
+        background-size: 0 2px, 2px 0, 0 2px, 2px 0;
+        background-position: left top, right top, right bottom, left bottom;
+      }
+      .move-border:hover {
+        background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="move-border">moveing border</div>
+  </body>
+</html>
