@@ -8,7 +8,7 @@ ParentType.prototype.say = function() {
     console.log('this is ParentType')
 }
 function ChildType(score) {
-    ParentType.call(this,name,age,gender)
+    ParentType.call(this)
     this.score = score
 }
 ChildType.prototype = new ParentType() || Object.create(ParentType.prototype)
@@ -17,3 +17,6 @@ ChildType.prototype.study = function() {
     console.log('this is studying front-end')
 }
 
+let child = new ChildType(100)
+
+child.study()
